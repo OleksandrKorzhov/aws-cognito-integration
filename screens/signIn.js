@@ -24,7 +24,7 @@ export const SignInScreen = ({navigation}) => {
 
   return (
     <Page>
-      <Input label="Phone number" onChange={setUsername} />
+      <Input type="default" label="Phone number" onChange={setUsername} />
       <Btn title="Sign In" onPress={onSignIn} />
     </Page>
   );
