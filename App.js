@@ -27,9 +27,9 @@ const App = () => {
   return (
     <NativeAuthContext
       config={{
-        region: 'us-east-2',
-        userPoolId: 'us-east-1_OLjb63UJa',
-        userPoolWebClientId: '30u58eo08vfhif7jv1advs60mv',
+        region: 'us-west-2',
+        userPoolId: 'us-west-2_Hb6uCaHjg',
+        userPoolWebClientId: 'lvdvd4p4cgnd4eia8al9usv3j',
       }}>
       <DataContext>
         <NavigationContainer>

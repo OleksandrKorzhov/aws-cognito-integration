@@ -1,17 +1,18 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {Alert, Button} from 'react-native';
-import {AuthService} from '../services';
+import React, {useContext, useState} from 'react';
 import {routes} from '../constants';
 import {Page} from '../components/page';
 import {Input} from '../components/input';
-import {DataContext} from '../dataContext';
-import {challenges} from '../constants/auth';
 import Btn from '../components/btn';
 import {NativeAuthContext} from '../sh-universal-user-auth/native';
 
 export const SignInScreen = ({navigation}) => {
   const [username, setUsername] = useState();
   const {startPasswordlessLogin} = useContext(NativeAuthContext.context);
+  const obj = useContext(NativeAuthContext.context);
+
+  console.log(obj);
+  console.log(startPasswordlessLogin);
+  console.log(username);
 
   const onSignIn = async () => {
     await startPasswordlessLogin({
