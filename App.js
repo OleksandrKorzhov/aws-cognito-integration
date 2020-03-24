@@ -28,8 +28,8 @@ const App = () => {
     <NativeAuthContext
       config={{
         region: 'us-west-2',
-        userPoolId: 'us-west-2_Hb6uCaHjg',
-        userPoolWebClientId: 'lvdvd4p4cgnd4eia8al9usv3j',
+        userPoolId: 'us-west-2_LPqThY0kQ',
+        userPoolWebClientId: '5s287ac5cj8gbcjp2lq0ll6elo',
       }}>
       <DataContext>
         <NavigationContainer>

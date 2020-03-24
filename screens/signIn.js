@@ -8,11 +8,6 @@ import {NativeAuthContext} from '../sh-universal-user-auth/native';
 export const SignInScreen = ({navigation}) => {
   const [username, setUsername] = useState();
   const {startPasswordlessLogin} = useContext(NativeAuthContext.context);
-  const obj = useContext(NativeAuthContext.context);
-
-  console.log(obj);
-  console.log(startPasswordlessLogin);
-  console.log(username);
 
   const onSignIn = async () => {
     await startPasswordlessLogin({
@@ -24,7 +19,7 @@ export const SignInScreen = ({navigation}) => {
 
   return (
     <Page>
-      <Input type="default" label="Phone number" onChange={setUsername} />
+      <Input type="default" label="Email address" onChange={setUsername} />
       <Btn title="Sign In" onPress={onSignIn} />
     </Page>
   );
