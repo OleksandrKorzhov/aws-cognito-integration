@@ -26,11 +26,8 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NativeAuthContext
-      config={{
-        region: 'us-east-2',
-        userPoolId: 'us-east-1_OLjb63UJa',
-        userPoolWebClientId: '30u58eo08vfhif7jv1advs60mv',
-      }}>
+      // config={{}}
+      useSocialLogin={true}>
       <DataContext>
         <NavigationContainer>
           <Stack.Navigator initialRouteName={routes.home}>
