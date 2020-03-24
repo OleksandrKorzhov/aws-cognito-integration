@@ -1,11 +1,7 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {Alert, Button} from 'react-native';
-import {AuthService} from '../services';
+import React, {useContext, useState} from 'react';
 import {routes} from '../constants';
 import {Page} from '../components/page';
 import {Input} from '../components/input';
-import {DataContext} from '../dataContext';
-import {challenges} from '../constants/auth';
 import Btn from '../components/btn';
 import {NativeAuthContext} from '../sh-universal-user-auth/native';
 
@@ -23,7 +19,7 @@ export const SignInScreen = ({navigation}) => {
 
   return (
     <Page>
-      <Input label="Phone number" onChange={setUsername} />
+      <Input type="default" label="Email address" onChange={setUsername} />
       <Btn title="Sign In" onPress={onSignIn} />
     </Page>
   );
