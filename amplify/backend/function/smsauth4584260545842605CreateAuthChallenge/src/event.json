@@ -1,0 +1,12 @@
+{
+    "request": {
+        "challengeName": "CUSTOM_CHALLENGE",
+        "userAttributes": {
+            "phone_number": "+380633839555"
+        }
+    },
+    "response": {
+        "publicChallengeParameters": {},
+        "privateChallengeParameters": {}
+    }
+}

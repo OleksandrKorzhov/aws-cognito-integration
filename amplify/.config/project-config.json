@@ -1,0 +1,17 @@
+{
+    "projectName": "smsAuth",
+    "version": "3.0",
+    "frontend": "javascript",
+    "javascript": {
+        "framework": "react-native",
+        "config": {
+            "SourceDir": "/",
+            "DistributionDir": "build",
+            "BuildCommand": "yarn build",
+            "StartCommand": "yarn android"
+        }
+    },
+    "providers": [
+        "awscloudformation"
+    ]
+}

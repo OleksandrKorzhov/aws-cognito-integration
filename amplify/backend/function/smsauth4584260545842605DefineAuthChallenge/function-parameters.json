@@ -1,0 +1,14 @@
+{
+    "trigger": true,
+    "modules": [
+        "boilerplate-define-challenge"
+    ],
+    "parentResource": "smsauth4584260545842605",
+    "functionName": "smsauth4584260545842605DefineAuthChallenge",
+    "parentStack": "auth",
+    "triggerEnvs": "[]",
+    "triggerTemplate": "DefineAuthChallenge.json.ejs",
+    "roleName": "smsauth4584260545842605DefineAuthChallenge",
+    "skipEdit": true,
+    "resourceName": "smsauth4584260545842605DefineAuthChallenge"
+}
