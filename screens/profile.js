@@ -22,7 +22,7 @@ const ProfileScreen = ({navigation}) => {
 
   return (
     <Page>
-      <Text>{profile.user.username}</Text>
+      <Text>{profile?.user?.username}</Text>
       <Button title="Sign Out" onPress={onSignOut} />
     </Page>
   );
