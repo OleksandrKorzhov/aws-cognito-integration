@@ -21,6 +21,7 @@ import {CodeFillScreen} from './screens/codeFill';
 import {HomeScreen} from './screens/home';
 import ProfileScreen from './screens/profile';
 import SSOScreen from './screens/sso';
+import {NativeAuthContext} from './sh-universal-user-auth/native';
 
 const uniqueEmailAppConfig = {
   region: 'us-east-1',
@@ -42,18 +43,25 @@ const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <DataContext>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName={routes.home}>
-          <Stack.Screen name={routes.signUp} component={SignUpScreen} />
-          <Stack.Screen name={routes.signIn} component={SignInScreen} />
-          <Stack.Screen name={routes.codeFill} component={CodeFillScreen} />
-          <Stack.Screen name={routes.home} component={HomeScreen} />
-          <Stack.Screen name={routes.profile} component={ProfileScreen} />
-          <Stack.Screen name={routes.sso} component={SSOScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </DataContext>
+    <NativeAuthContext
+      config={{
+        region: 'us-east-2',
+        userPoolId: 'us-east-1_OLjb63UJa',
+        userPoolWebClientId: '30u58eo08vfhif7jv1advs60mv',
+      }}>
+      <DataContext>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName={routes.home}>
+            <Stack.Screen name={routes.signUp} component={SignUpScreen} />
+            <Stack.Screen name={routes.signIn} component={SignInScreen} />
+            <Stack.Screen name={routes.codeFill} component={CodeFillScreen} />
+            <Stack.Screen name={routes.home} component={HomeScreen} />
+            <Stack.Screen name={routes.profile} component={ProfileScreen} />
+            <Stack.Screen name={routes.sso} component={SSOScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </DataContext>
+    </NativeAuthContext>
   );
 };
 

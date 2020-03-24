@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Alert, Button} from 'react-native';
 import {AuthService} from '../services';
 import {routes} from '../constants';
@@ -7,35 +7,24 @@ import {Input} from '../components/input';
 import {DataContext} from '../dataContext';
 import {challenges} from '../constants/auth';
 import Btn from '../components/btn';
+import {NativeAuthContext} from '../sh-universal-user-auth/native';
 
 export const SignInScreen = ({navigation}) => {
-  const {
-    username,
-    setUsername,
-    setChallengeType,
-    withLoading,
-    setLoginSession,
-  } = useContext(DataContext.context);
-  const loadingKey = 'signIn';
+  const [username, setUsername] = useState();
+  const {startPasswordlessLogin} = useContext(NativeAuthContext.context);
 
-  const onSignIn = withLoading(
-    async () => {
-      const currentUser = await AuthService.signIn({username});
-      setLoginSession(currentUser);
-      setChallengeType(challenges.PASSWORDLESS);
+  const onSignIn = async () => {
+    await startPasswordlessLogin({
+      phoneNumber: username,
+    });
 
-      navigation.navigate(routes.codeFill);
-    },
-    {
-      silentErrors: true,
-      key: loadingKey,
-    },
-  );
+    navigation.navigate(routes.codeFill);
+  };
 
   return (
     <Page>
       <Input label="Phone number" onChange={setUsername} />
-      <Btn loadingKey={loadingKey} title="Sign In" onPress={onSignIn} />
+      <Btn title="Sign In" onPress={onSignIn} />
     </Page>
   );
 };
