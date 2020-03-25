@@ -1,11 +1,7 @@
-import React, {useCallback, useContext, useState} from 'react';
-import {AuthService} from '../services';
+import React, {useContext, useState} from 'react';
 import {Page} from '../components/page';
 import {Input} from '../components/input';
-import {DataContext} from '../dataContext';
 import {routes} from '../constants';
-import {challenges} from '../constants/auth';
-import {selectAttributes} from '../selectors/userProfile';
 import TextBtn from '../components/textBtn';
 import Btn from '../components/btn';
 import {NativeAuthContext} from '../sh-universal-user-auth/native';

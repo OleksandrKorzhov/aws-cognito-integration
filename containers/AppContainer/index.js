@@ -9,25 +9,29 @@ import {HomeScreen} from '../../screens/home';
 import ProfileScreen from '../../screens/profile';
 import SSOScreen from '../../screens/sso';
 import {NativeAuthContext} from '../../sh-universal-user-auth/native';
+import Loader from '../../components/loader';
 
 const {Navigator, Screen} = createStackNavigator();
 
 export default () => {
-  const {user} = useContext(NativeAuthContext.context);
-
+  const {user, loading} = useContext(NativeAuthContext.context);
+  console.log(loading);
   return (
-    <Navigator initialRouteName="HomeScreen">
-      {!user ? (
-        <>
-          <Screen name={routes.home} component={HomeScreen} />
-          <Screen name={routes.signUp} component={SignUpScreen} />
-          <Screen name={routes.signIn} component={SignInScreen} />
-          <Screen name={routes.codeFill} component={CodeFillScreen} />
-          <Screen name={routes.sso} component={SSOScreen} />
-        </>
-      ) : (
-        <Screen name={routes.profile} component={ProfileScreen} />
-      )}
-    </Navigator>
+    <>
+      <Loader show={loading} />
+      <Navigator initialRouteName="HomeScreen">
+        {!user ? (
+          <>
+            <Screen name={routes.home} component={HomeScreen} />
+            <Screen name={routes.signUp} component={SignUpScreen} />
+            <Screen name={routes.signIn} component={SignInScreen} />
+            <Screen name={routes.codeFill} component={CodeFillScreen} />
+            <Screen name={routes.sso} component={SSOScreen} />
+          </>
+        ) : (
+          <Screen name={routes.profile} component={ProfileScreen} />
+        )}
+      </Navigator>
+    </>
   );
 };

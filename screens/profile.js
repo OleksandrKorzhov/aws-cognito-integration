@@ -7,11 +7,9 @@ import {Divider} from '../components/divider';
 const ProfileScreen = () => {
   const {user, logout} = useContext(NativeAuthContext.context);
 
-  const {username} = user;
-
   return (
     <Page>
-      <Text>{username}</Text>
+      <Text>{user?.username}</Text>
       <Divider />
       <Button title="Sign Out" onPress={logout} />
     </Page>
