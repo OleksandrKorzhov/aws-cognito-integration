@@ -10,24 +10,24 @@ import ProfileScreen from '../../screens/profile';
 import SSOScreen from '../../screens/sso';
 import {NativeAuthContext} from '../../sh-universal-user-auth/native';
 
-const Stack = createStackNavigator();
+const {Navigator, Screen} = createStackNavigator();
 
 export default () => {
-  const {isLoggedIn} = useContext(NativeAuthContext.context);
+  const {user} = useContext(NativeAuthContext.context);
 
   return (
-    <Stack.Navigator initialRouteName={routes.home}>
-      {!isLoggedIn ? (
+    <Navigator initialRouteName="HomeScreen">
+      {!user ? (
         <>
-          <Stack.Screen name={routes.signUp} component={SignUpScreen} />
-          <Stack.Screen name={routes.signIn} component={SignInScreen} />
-          <Stack.Screen name={routes.codeFill} component={CodeFillScreen} />
-          <Stack.Screen name={routes.home} component={HomeScreen} />
-          <Stack.Screen name={routes.sso} component={SSOScreen} />
+          <Screen name={routes.home} component={HomeScreen} />
+          <Screen name={routes.signUp} component={SignUpScreen} />
+          <Screen name={routes.signIn} component={SignInScreen} />
+          <Screen name={routes.codeFill} component={CodeFillScreen} />
+          <Screen name={routes.sso} component={SSOScreen} />
         </>
       ) : (
-        <Stack.Screen name={routes.profile} component={ProfileScreen} />
+        <Screen name={routes.profile} component={ProfileScreen} />
       )}
-    </Stack.Navigator>
+    </Navigator>
   );
 };

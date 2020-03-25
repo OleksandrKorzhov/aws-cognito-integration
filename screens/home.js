@@ -3,15 +3,10 @@ import {Button, View} from 'react-native';
 import {Page} from '../components/page';
 import {routes} from '../constants';
 import {NativeAuthContext} from '../sh-universal-user-auth/native';
-
-const Divider = () => <View style={{marginVertical: 5}} />;
+import {Divider} from '../components/divider';
 
 export const HomeScreen = ({navigation}) => {
   const {loginWithGoogle} = useContext(NativeAuthContext.context);
-
-  const onSignInWithGoogle = async () => {
-    await loginWithGoogle();
-  };
 
   return (
     <Page>
@@ -30,7 +25,7 @@ export const HomeScreen = ({navigation}) => {
       <Button
         title="Sign in with google"
         color="red"
-        onPress={onSignInWithGoogle}
+        onPress={loginWithGoogle}
       />
     </Page>
   );
