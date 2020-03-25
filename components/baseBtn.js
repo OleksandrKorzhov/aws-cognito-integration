@@ -3,7 +3,7 @@ import {DataContext} from '../dataContext';
 import {ActivityIndicator, Keyboard, View} from 'react-native';
 
 const BaseBtn = ({
-  loadingKey,
+  isLoading,
   hideKeyboardByPress,
   spinnerColor = 'white',
   onPress,
@@ -11,7 +11,6 @@ const BaseBtn = ({
   btnComponent: BtnComponent,
   ...props
 }) => {
-  const {hasLoadingByKey} = useContext(DataContext.context);
   const patchedOnPress = (...args) => {
     if (hideKeyboardByPress) {
       Keyboard.dismiss();
@@ -19,19 +18,17 @@ const BaseBtn = ({
     onPress(...args);
   };
 
-  const hasLoading = hasLoadingByKey(loadingKey);
-  // const hasLoading = true;
-
   return (
     <View>
       <View style={{zIndex: 0}}>
         <BtnComponent
           {...props}
+          isLoading={isLoading}
           onPress={patchedOnPress}
-          title={!hasLoading ? title : ''}
+          title={!isLoading ? title : ''}
         />
       </View>
-      {hasLoading ? (
+      {isLoading ? (
         <View
           style={{
             position: 'absolute',

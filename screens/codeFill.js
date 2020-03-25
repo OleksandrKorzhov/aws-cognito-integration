@@ -1,20 +1,19 @@
-import React, {useCallback, useContext, useState} from 'react';
-import {AuthService} from '../services';
+import React, {useContext, useState} from 'react';
 import {Page} from '../components/page';
 import {Input} from '../components/input';
-import {DataContext} from '../dataContext';
 import {routes} from '../constants';
-import {challenges} from '../constants/auth';
-import {selectAttributes} from '../selectors/userProfile';
 import TextBtn from '../components/textBtn';
 import Btn from '../components/btn';
 import {NativeAuthContext} from '../sh-universal-user-auth/native';
+import {asyncActions} from '../sh-universal-user-auth/native/constants';
 
 export const CodeFillScreen = ({navigation}) => {
   const [code, setCode] = useState();
-  const {confirmPasswordlessLogin, retryPasswordlessLogin} = useContext(
-    NativeAuthContext.context,
-  );
+  const {
+    confirmPasswordlessLogin,
+    retryPasswordlessLogin,
+    checkLoadingById,
+  } = useContext(NativeAuthContext.context);
 
   const onSubmitChallengeCode = async () => {
     await confirmPasswordlessLogin({
@@ -30,13 +29,13 @@ export const CodeFillScreen = ({navigation}) => {
     <Page>
       <Input label="Confirmation code" onChange={setCode} />
       <TextBtn
-        // loadingKey={resendOtpLoadingKey}
+        isLoading={checkLoadingById(asyncActions.retryPasswordlessLogin)}
         title="Resend OTP"
         onPress={onResendOtp}
         style={{paddingTop: 15, paddingBottom: 45}}
       />
       <Btn
-        // loadingKey={submitLoadingKey}
+        isLoading={checkLoadingById(asyncActions.confirmPasswordlessLogin)}
         title="Submit"
         onPress={onSubmitChallengeCode}
       />

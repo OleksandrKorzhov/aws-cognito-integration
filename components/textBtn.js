@@ -8,18 +8,20 @@ const TextBtn = ({style, ...props}) => {
     <BaseBtn
       {...props}
       spinnerColor="black"
-      btnComponent={({title, onPress}) => (
-        <TouchableOpacity
-          onPress={onPress}
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '100%',
-            ...style,
-          }}>
-          <Text>{title}</Text>
-        </TouchableOpacity>
-      )}
+      btnComponent={({title, onPress, isLoading}) =>
+        isLoading ? null : (
+          <TouchableOpacity
+            onPress={onPress}
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '100%',
+              ...style,
+            }}>
+            <Text>{title}</Text>
+          </TouchableOpacity>
+        )
+      }
     />
   );
 };
