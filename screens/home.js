@@ -1,10 +1,8 @@
 import React, {useContext, useEffect} from 'react';
-import {Button, View} from 'react-native';
+import {Button} from 'react-native';
 import {Page} from '../components/page';
 import {routes} from '../constants';
 import {NativeAuthContext} from '../sh-universal-user-auth/native';
-import Btn from '../components/btn';
-import {asyncActions} from '../sh-universal-user-auth/native/constants';
 import {Divider} from '../components/divider';
 
 export const HomeScreen = ({navigation}) => {
@@ -18,7 +16,7 @@ export const HomeScreen = ({navigation}) => {
 
   useEffect(() => {
     checkSession();
-  }, [checkSession]);
+  }, []);
 
   //   return (
   //     <Page>
