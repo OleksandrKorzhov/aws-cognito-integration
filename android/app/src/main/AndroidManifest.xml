@@ -24,7 +24,7 @@
           <category android:name="android.intent.category.DEFAULT" />
           <category android:name="android.intent.category.BROWSABLE" />
           <data
-            android:host="sample-sample.auth.eu-central-1.amazoncognito.com"
+            android:host="sms-social-auth-sampledev.auth.us-west-2.amazoncognito.com"
             android:pathPrefix="/callback"
             android:scheme="${applicationId}" />
         </intent-filter>
