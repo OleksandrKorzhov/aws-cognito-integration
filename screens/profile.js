@@ -1,29 +1,17 @@
-import React, {useCallback, useContext} from 'react';
-import {DataContext} from '../dataContext';
+import React, {useContext} from 'react';
 import {Page} from '../components/page';
-import {Alert, Button, Text} from 'react-native';
-import {AuthService} from '../services';
-import {routes} from '../constants';
+import {Button, Text} from 'react-native';
+import {NativeAuthContext} from '../sh-universal-user-auth/native';
+import {Divider} from '../components/divider';
 
-const ProfileScreen = ({navigation}) => {
-  const {profile} = useContext(DataContext.context);
-
-  console.log(profile);
-
-  const onSignOut = useCallback(async () => {
-    try {
-      await AuthService.signOut();
-
-      navigation.navigate(routes.home);
-    } catch (e) {
-      Alert.alert(e.name, e.message);
-    }
-  }, [navigation]);
+const ProfileScreen = () => {
+  const {user, logout} = useContext(NativeAuthContext.context);
 
   return (
     <Page>
-      <Text>{profile.user.username}</Text>
-      <Button title="Sign Out" onPress={onSignOut} />
+      <Text>{user?.username}</Text>
+      <Divider />
+      <Button title="Sign Out" onPress={logout} />
     </Page>
   );
 };

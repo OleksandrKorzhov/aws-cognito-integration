@@ -14,6 +14,8 @@ export const SignUpScreen = ({navigation}) => {
 
   const onSignUp = useCallback(async () => {
     try {
+      console.log(await AuthService.signUp({username}));
+
       setProfile(await AuthService.signUp({username}));
       setChallengeType(challenges.SIGN_UP);
 
