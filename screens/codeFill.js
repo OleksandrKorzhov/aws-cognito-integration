@@ -6,8 +6,9 @@ import TextBtn from '../components/textBtn';
 import Btn from '../components/btn';
 import {NativeAuthContext} from '../sh-universal-user-auth/native';
 import {asyncActions} from '../sh-universal-user-auth/native/constants';
+import withAuth from '../components/withAuth';
 
-export const CodeFillScreen = ({navigation}) => {
+export const CodeFillScreen = ({navigation, route}) => {
   const [code, setCode] = useState();
   const {
     confirmPasswordlessLogin,
@@ -20,12 +21,13 @@ export const CodeFillScreen = ({navigation}) => {
       answer: code,
     });
 
-    navigation.navigate(routes.home);
+    navigation.push(routes.home);
   };
 
   const onResendOtp = () => retryPasswordlessLogin();
 
   return (
+    // <Page route={route}>
     <Page>
       <Input label="Confirmation code" onChange={setCode} />
       <TextBtn

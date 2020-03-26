@@ -1,10 +1,22 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {Keyboard, TouchableWithoutFeedback, View} from 'react-native';
 import {DataContext} from '../dataContext';
 import Spinner from './spinner';
+import {NativeAuthContext} from '../sh-universal-user-auth/native';
+import {asyncActions} from '../sh-universal-user-auth/native/constants';
+import {routes} from '../constants';
 
-export const Page = ({children}) => {
-  const {isLoading} = useContext(DataContext.context);
+export const Page = ({children, navigation, route}) => {
+  const {checkLoadingById, isLoggedIn} = useContext(NativeAuthContext.context);
+
+  useEffect(() => {
+    console.log('+', isLoggedIn);
+    if (!navigation) {
+      return;
+    }
+
+    navigation.navigate(isLoggedIn ? routes.profile : routes.home);
+  }, [isLoggedIn, navigation, route]);
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -15,8 +27,12 @@ export const Page = ({children}) => {
           width: '100%',
           paddingHorizontal: 20,
         }}>
-        {/*<Spinner isActive={isLoading} />*/}
         <View style={{zIndex: 0}}>{children}</View>
+        {/*{isLoading ? (*/}
+        {/*  <Spinner isActive={isLoading} />*/}
+        {/*) : (*/}
+        {/*  <View style={{zIndex: 0}}>{children}</View>*/}
+        {/*)}*/}
       </View>
     </TouchableWithoutFeedback>
   );

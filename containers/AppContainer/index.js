@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import {routes} from '../../constants';
@@ -10,28 +10,20 @@ import ProfileScreen from '../../screens/profile';
 import SSOScreen from '../../screens/sso';
 import {NativeAuthContext} from '../../sh-universal-user-auth/native';
 import Loader from '../../components/loader';
+import {Alert} from 'react-native';
+import withAuth from '../../components/withAuth';
 
 const {Navigator, Screen} = createStackNavigator();
 
 export default () => {
-  const {user, loading} = useContext(NativeAuthContext.context);
-  console.log(loading);
+  const {user, loading, isLoggedIn} = useContext(NativeAuthContext.context);
+
   return (
-    <>
-      <Loader show={loading} />
-      <Navigator initialRouteName="HomeScreen">
-        {!user ? (
-          <>
-            <Screen name={routes.home} component={HomeScreen} />
-            <Screen name={routes.signUp} component={SignUpScreen} />
-            <Screen name={routes.signIn} component={SignInScreen} />
-            <Screen name={routes.codeFill} component={CodeFillScreen} />
-            <Screen name={routes.sso} component={SSOScreen} />
-          </>
-        ) : (
-          <Screen name={routes.profile} component={ProfileScreen} />
-        )}
-      </Navigator>
-    </>
+    <Navigator initialRouteName={routes.home}>
+      <Screen name={routes.home} component={HomeScreen} />
+      <Screen name={routes.signIn} component={SignInScreen} />
+      <Screen name={routes.codeFill} component={CodeFillScreen} />
+      <Screen name={routes.profile} component={ProfileScreen} />
+    </Navigator>
   );
 };

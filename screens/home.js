@@ -4,57 +4,43 @@ import {Page} from '../components/page';
 import {routes} from '../constants';
 import {NativeAuthContext} from '../sh-universal-user-auth/native';
 import {Divider} from '../components/divider';
+import Btn from '../components/btn';
+import {asyncActions} from '../sh-universal-user-auth/native/constants';
+import withAuth from '../components/withAuth';
 
-export const HomeScreen = ({navigation}) => {
+export const HomeScreen = withAuth(({navigation}) => {
   const {
     loginWithGoogle,
     checkSession,
-    isLoggedIn,
-    logout,
     checkLoadingById,
+    isLoggedIn,
   } = useContext(NativeAuthContext.context);
 
   useEffect(() => {
     checkSession();
   }, []);
 
-  //   return (
-  //     <Page>
-  //       <Btn
-  //         isLoading={checkLoadingById(asyncActions.checkSession)}
-  //         title="Passwordless login"
-  //         onPress={() => navigation.navigate(routes.signIn)}
-  //       />
-  //       <Divider />
-  //       {isLoggedIn ? (
-  //         <Btn
-  //           isLoading={checkLoadingById(asyncActions.logout)}
-  //           title="Logout"
-  //           onPress={logout}
-  //         />
-  //       ) : null}
-  //     </Page>
-  //   );
-  // };
+  // useEffect(() => {
+  //   console.log('+');
+  //   if (isLoggedIn) {
+  //     navigation.navigate(routes.profile);
+  //   }
+  // }, [isLoggedIn, navigation]);
+
   return (
+    // <Page navigation={navigation}>
     <Page>
       <Button
         title="Passwordless login"
         onPress={() => navigation.navigate(routes.signIn)}
       />
       <Divider />
-      <Button
-        title="Sign Up"
-        onPress={() => navigation.navigate(routes.signUp)}
-      />
-      <Divider />
-      <Button title="SSO" onPress={() => navigation.navigate(routes.sso)} />
-      <Divider />
-      <Button
+      <Btn
+        isLoading={checkLoadingById(asyncActions.loginViaGoogle)}
         title="Sign in with google"
         color="red"
         onPress={loginWithGoogle}
       />
     </Page>
   );
-};
+});
