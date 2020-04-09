@@ -18,12 +18,14 @@ export const SignInScreen = ({navigation}) => {
       phoneNumber: username,
     });
 
+    setUsername('');
+
     navigation.navigate(routes.codeFill);
   };
 
   return (
     <Page>
-      <Input type="default" label="Phone number" onChange={setUsername} />
+      <Input type="phone-pad" label="Phone number" onChange={setUsername} />
       <Btn
         isLoading={checkLoadingById(asyncActions.startPasswordlessLogin)}
         title="Sign In"

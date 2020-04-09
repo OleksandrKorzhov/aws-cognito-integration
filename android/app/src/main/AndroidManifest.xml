@@ -24,7 +24,6 @@
           <category android:name="android.intent.category.DEFAULT" />
           <category android:name="android.intent.category.BROWSABLE" />
           <data
-            android:host="sms-social-auth-yara-dev.auth.us-west-2.amazoncognito.com"
             android:pathPrefix="/callback"
             android:scheme="${applicationId}" />
         </intent-filter>

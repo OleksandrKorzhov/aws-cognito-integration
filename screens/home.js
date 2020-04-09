@@ -20,15 +20,7 @@ export const HomeScreen = withAuth(({navigation}) => {
     checkSession();
   }, []);
 
-  // useEffect(() => {
-  //   console.log('+');
-  //   if (isLoggedIn) {
-  //     navigation.navigate(routes.profile);
-  //   }
-  // }, [isLoggedIn, navigation]);
-
   return (
-    // <Page navigation={navigation}>
     <Page>
       <Button
         title="Passwordless login"
