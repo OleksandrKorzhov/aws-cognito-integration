@@ -27,12 +27,13 @@ export const HomeScreen = withAuth(({navigation}) => {
         onPress={() => navigation.navigate(routes.signIn)}
       />
       <Divider />
-      <Btn
-        isLoading={checkLoadingById(asyncActions.loginViaGoogle)}
-        title="Sign in with google"
-        color="red"
-        onPress={loginWithGoogle}
-      />
+      {/* FOR NOW IT DOSN'T WORK! */}
+      {/*<Btn*/}
+      {/*  isLoading={checkLoadingById(asyncActions.loginViaGoogle)}*/}
+      {/*  title="Sign in with google"*/}
+      {/*  color="red"*/}
+      {/*  onPress={loginWithGoogle}*/}
+      {/*/>*/}
     </Page>
   );
 });
