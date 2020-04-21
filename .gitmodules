@@ -1,1 +1,4 @@
 
+[submodule "sh-universal-user-auth"]
+	path = sh-universal-user-auth
+	url = git@github.com:yaradigitallabs/sh-universal-user-auth.git
