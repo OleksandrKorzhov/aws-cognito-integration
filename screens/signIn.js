@@ -3,9 +3,8 @@ import {routes} from '../constants';
 import {Page} from '../components/page';
 import {Input} from '../components/input';
 import Btn from '../components/btn';
-import {NativeAuthContext} from '../sh-universal-user-auth/native';
-import {asyncActions} from '../sh-universal-user-auth/native/constants';
-import withAuth from '../components/withAuth';
+import {NativeAuthContext} from '@yaradigitallabs/sh-universal-user-auth/native';
+import {asyncActions} from '@yaradigitallabs/sh-universal-user-auth/native/constants';
 
 export const SignInScreen = ({navigation}) => {
   const [username, setUsername] = useState();
