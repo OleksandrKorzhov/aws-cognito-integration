@@ -11,7 +11,7 @@ export const HomeScreen = withAuth(({navigation}) => {
 
   useEffect(() => {
     checkSession();
-  }, [checkSession]);
+  }, []);
 
   return (
     <Page>
