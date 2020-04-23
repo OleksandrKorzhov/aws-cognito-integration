@@ -6,7 +6,7 @@ import {SignInScreen} from '../../screens/signIn';
 import {CodeFillScreen} from '../../screens/codeFill';
 import {HomeScreen} from '../../screens/home';
 import ProfileScreen from '../../screens/profile';
-import {NativeAuthContext} from '../../sh-universal-user-auth/native';
+import {NativeAuthContext} from '../../sh-universal-user-auth/packages/univeral-user-auth-native';
 
 const {Navigator, Screen} = createStackNavigator();
 

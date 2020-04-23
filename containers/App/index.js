@@ -7,7 +7,7 @@ import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 
-import {NativeAuthContext} from '../../sh-universal-user-auth/native';
+import {NativeAuthContext} from '../../sh-universal-user-auth/packages/univeral-user-auth-native';
 import {DataContext} from '../../dataContext';
 import AppContainer from '../AppContainer';
 import {isMountedRef, navigationRef} from './RootNavigation';

@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
 import {Page} from '../components/page';
-import {NativeAuthContext} from '../sh-universal-user-auth/native';
+import {NativeAuthContext} from '../sh-universal-user-auth/packages/univeral-user-auth-native';
 import {Divider} from '../components/divider';
 import Btn from '../components/btn';
-import {asyncActions} from '../sh-universal-user-auth/native/constants';
+import {asyncActions} from '../sh-universal-user-auth/packages/univeral-user-auth-native/constants';
 import withAuth from '../components/withAuth';
 
 const ProfileScreen = withAuth(({navigation}) => {

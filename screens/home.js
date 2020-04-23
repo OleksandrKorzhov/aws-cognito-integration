@@ -2,7 +2,7 @@ import React, {useContext, useEffect} from 'react';
 import {Button} from 'react-native';
 import {Page} from '../components/page';
 import {routes} from '../constants';
-import {NativeAuthContext} from '../sh-universal-user-auth/native';
+import {NativeAuthContext} from '../sh-universal-user-auth/packages/univeral-user-auth-native';
 import {Divider} from '../components/divider';
 import withAuth from '../components/withAuth';
 

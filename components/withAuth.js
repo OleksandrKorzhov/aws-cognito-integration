@@ -1,6 +1,6 @@
 import React from 'react';
 import {useContext, useEffect} from 'react';
-import {NativeAuthContext} from '../sh-universal-user-auth/native';
+import {NativeAuthContext} from '../sh-universal-user-auth/packages/univeral-user-auth-native';
 import {routes} from '../constants';
 
 export default Component =>

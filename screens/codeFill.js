@@ -4,8 +4,8 @@ import {Input} from '../components/input';
 import {routes} from '../constants';
 import TextBtn from '../components/textBtn';
 import Btn from '../components/btn';
-import {NativeAuthContext} from '../sh-universal-user-auth/native';
-import {asyncActions} from '../sh-universal-user-auth/native/constants';
+import {NativeAuthContext} from '../sh-universal-user-auth/packages/univeral-user-auth-native';
+import {asyncActions} from '../sh-universal-user-auth/packages/univeral-user-auth-native/constants';
 
 export const CodeFillScreen = ({navigation, route}) => {
   const [code, setCode] = useState();
