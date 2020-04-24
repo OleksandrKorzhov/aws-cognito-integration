@@ -4,11 +4,10 @@ import {Page} from '../components/page';
 import {Input} from '../components/input';
 import Btn from '../components/btn';
 import {NativeAuthContext} from '../sh-universal-user-auth/packages/univeral-user-auth-native';
-import {asyncActions} from '../sh-universal-user-auth/packages/univeral-user-auth-native/constants';
 
 export const SignInScreen = ({navigation}) => {
   const [username, setUsername] = useState();
-  const {startPasswordlessLogin, checkLoadingById} = useContext(
+  const {startPasswordlessLogin, isLoading} = useContext(
     NativeAuthContext.context,
   );
 
@@ -25,11 +24,7 @@ export const SignInScreen = ({navigation}) => {
   return (
     <Page>
       <Input type="phone-pad" label="Phone number" onChange={setUsername} />
-      <Btn
-        isLoading={checkLoadingById(asyncActions.startPasswordlessLogin)}
-        title="Sign In"
-        onPress={onSignIn}
-      />
+      <Btn isLoading={isLoading} title="Sign In" onPress={onSignIn} />
     </Page>
   );
 };

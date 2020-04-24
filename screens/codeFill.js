@@ -12,7 +12,7 @@ export const CodeFillScreen = ({navigation, route}) => {
   const {
     confirmPasswordlessLogin,
     retryPasswordlessLogin,
-    checkLoadingById,
+    isLoading,
   } = useContext(NativeAuthContext.context);
 
   const onSubmitChallengeCode = async () => {
@@ -26,17 +26,15 @@ export const CodeFillScreen = ({navigation, route}) => {
   const onResendOtp = () => retryPasswordlessLogin();
 
   return (
-    // <Page route={route}>
     <Page>
       <Input label="Confirmation code" onChange={setCode} />
       <TextBtn
-        isLoading={checkLoadingById(asyncActions.retryPasswordlessLogin)}
         title="Resend OTP"
         onPress={onResendOtp}
         style={{paddingTop: 15, paddingBottom: 45}}
       />
       <Btn
-        isLoading={checkLoadingById(asyncActions.confirmPasswordlessLogin)}
+        isLoading={isLoading}
         title="Submit"
         onPress={onSubmitChallengeCode}
       />
