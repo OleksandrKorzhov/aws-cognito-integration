@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from 'react';
 import {Keyboard, TouchableWithoutFeedback, View} from 'react-native';
-import {NativeAuthContext} from '../sh-universal-user-auth/packages/univeral-user-auth-native';
+import {NativeAuthContext} from '@yaradigitallabs/sh-universal-user-auth-native';
 import {routes} from '../constants';
 
 export const Page = ({children, navigation, route}) => {
